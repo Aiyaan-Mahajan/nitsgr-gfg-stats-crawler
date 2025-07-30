@@ -1,8 +1,11 @@
 name: Scrape GFG Students
 
 on:
+  schedule:
+    - cron: '0 3 * * *'      # Runs every day at 3:00 AM UTC (8:30 AM IST)
   push:
     branches: [ main ]
+  workflow_dispatch:         # Manual trigger
 
 jobs:
   scrape:
@@ -23,3 +26,11 @@ jobs:
 
     - name: Run Scrapy spider
       run: scrapy crawl gfg_api -o gfgnitsgrstudents.csv
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'actions@github.com'
+        git add gfgnitsgrstudents.csv
+        git commit -m "🗂️ Auto-update GFG data"
+        git push
