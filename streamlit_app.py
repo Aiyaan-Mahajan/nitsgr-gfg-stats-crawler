@@ -10,14 +10,13 @@ st.sidebar.header("Filters")
 min_problems = st.sidebar.slider("Minimum Problems Solved", 0, int(df["total_problems_solved"].max()), 0)
 min_score = st.sidebar.slider("Minimum Coding Score", 0, int(df["coding_score"].max()), 0)
 
+# Theme Toggle in Sidebar
+theme = st.sidebar.radio("Choose Theme", ["Light", "Dark"])
+
 # Apply filters
 filtered_df = df[(df["total_problems_solved"] >= min_problems) & (df["coding_score"] >= min_score)]
 
-# Title
-st.title("GFG NIT Srinagar Student Dashboard")
-
-theme = st.selectbox("Choose Theme", ["Light", "Dark"])
-
+# Apply theme styling
 if theme == "Dark":
     st.markdown(
         """
@@ -47,6 +46,8 @@ else:
         unsafe_allow_html=True,
     )
 
+# Title
+st.title("GFG NIT Srinagar Student Dashboard")
 
 # Subheader - Top Performers
 st.subheader("Top Performers")
@@ -61,10 +62,8 @@ with col1:
 with col2:
     search_handle = st.text_input("", placeholder="Search by Handle")
 
-
 if search_handle:
     filtered_df = filtered_df[filtered_df["handle"].str.contains(search_handle, case=False)]
-
 
 # Subheader - Inactive Students
 st.subheader("Inactive Students")
@@ -74,10 +73,14 @@ st.dataframe(inactive)
 
 # Subheader - Score Distribution
 st.subheader("Score Distribution")
-filtered_df["total_score"] = filtered_df["coding_score"] + filtered_df["total_problems_solved"] + filtered_df["potd_longest_streak"]
+filtered_df["total_score"] = (
+    filtered_df["coding_score"]
+    + filtered_df["total_problems_solved"]
+    + filtered_df["potd_longest_streak"]
+)
 st.bar_chart(filtered_df["total_score"])
 
-
+# 📥 Download Filtered Data
 @st.cache_data
 def convert_df(df):
     return df.to_csv(index=False).encode('utf-8')
