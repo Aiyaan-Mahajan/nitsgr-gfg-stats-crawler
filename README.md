@@ -54,7 +54,7 @@ pip install scrapy
 Execute the following command to run the spider and export the data to a CSV file:
 
 ```bash
-scrapy crawl gfg_api -o gfgnitsgrstudents.csv
+scrapy crawl gfgnitsgrstudents -o output.csv\n
 ```
 
 This will create a CSV file containing the complete set of student data.
