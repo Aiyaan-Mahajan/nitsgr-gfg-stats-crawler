@@ -1,7 +1,7 @@
 
 # GFG NIT Srinagar Student Scraper
 
-A professional Scrapy-based web scraper that collects student statistics from GeeksforGeeks for NIT Srinagar. It fetches data like username, coding score, total problems solved, and profile URL via their public API.
+A Scrapy-based web scraper that collects student statistics from GeeksforGeeks for NIT Srinagar. It fetches data like username, coding score, total problems solved, and profile URL via their public API.
 
 ## Features
 
