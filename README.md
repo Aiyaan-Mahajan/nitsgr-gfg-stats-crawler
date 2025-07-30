@@ -21,7 +21,7 @@ A professional Scrapy-based web scraper that collects student statistics from Ge
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/gfgnitsgrstudents.git
+git clone git@github.com:Aiyaan-Mahajan/nitsgr-gfg-stats-crawler.git
 cd gfgnitsgrstudents
 ```
 
