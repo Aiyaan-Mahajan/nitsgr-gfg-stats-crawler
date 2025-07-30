@@ -3,7 +3,7 @@ import json
 
 
 class GfgnitsgrstudentsSpider(scrapy.Spider):
-    name = "gfgnitsgrstudents"  # <-- must match command
+    name = "gfgnitsgrstudents"  # this command has to match with the block in this command --> scrapy crawl [(gfgnitsgrstudents)] -o output.csv\n
 
     allowed_domains = ["practiceapi.geeksforgeeks.org"]
 
