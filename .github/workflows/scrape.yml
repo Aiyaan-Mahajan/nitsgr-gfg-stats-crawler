@@ -1,37 +1,35 @@
 name: Scrape GFG Students
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '0 3 * * *'      # Runs every day at 3:00 AM UTC (8:30 AM IST)
-  push:
-    branches: [ main ]
-  workflow_dispatch:         # Manual trigger
+    - cron: '0 6 * * *' # runs daily at 6 AM UTC
 
 jobs:
   scrape:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout repo
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install scrapy pandas
 
-    - name: Run Scrapy spider
-      run: scrapy crawl gfgnitsgrstudents -o gfgnitsgrstudents.csv
+      - name: Run spider
+        run: scrapy crawl gfgnitsgrstudents -o gfgnitsgrstudents.csv
 
-
-    - name: Commit and push changes
-      run: |
-        git config --global user.name 'github-actions'
-        git config --global user.email 'actions@github.com'
-        git add gfgnitsgrstudents.csv
-        git commit -m "🗂️ Auto-update GFG data"
-        git push
+      - name: Commit output
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add gfgnitsgrstudents.csv
+          git commit -m "Update scraped data"
+          git push
