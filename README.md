@@ -1,41 +1,40 @@
-
 # GFG NIT Srinagar Student Scraper
 
-A Scrapy-based web scraper that collects student statistics from GeeksforGeeks for NIT Srinagar. It fetches data like username, coding score, total problems solved, and profile URL via their public API.
+A Python-based Scrapy project that automates the collection of student coding statistics from GeeksforGeeks (GFG) for NIT Srinagar. This data is extracted via GFG's public API and exported to a clean CSV format, with scheduled scraping and live visualization support.
 
-## Features
+## 🔍 Features
 
 - Scrapes paginated student data using GFG's public API.
-- Extracts structured statistics like coding score, problems solved, and profile links.
-- Exports data to a clean CSV file.
+- Extracts key metrics: username, coding score, problems solved, streak, and profile URL.
+- Outputs structured data to a CSV file.
+- Supports both manual and automated (scheduled) scraping via GitHub Actions.
+- Data visualization powered by Streamlit.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- Python 3
-- Scrapy
+- **Programming Language**: Python 3
+- **Web Scraping**: Scrapy
+- **Automation**: GitHub Actions
+- **Visualization**: Streamlit
 
----
-
-## Setup Instructions
+## 🚀 Getting Started
 
 ### 1. Clone the Repository
 
 ```bash
-git clone git@github.com:Aiyaan-Mahajan/nitsgr-gfg-stats-crawler.git
-cd gfgnitsgrstudents
+git clone https://github.com/Aiyaan-Mahajan/nitsgr-gfg-stats-crawler.git
+cd nitsgr-gfg-stats-crawler
 ```
 
 ### 2. Create and Activate Virtual Environment
 
 #### macOS / Linux
-
 ```bash
 python3 -m venv scrapy-env
 source scrapy-env/bin/activate
 ```
 
-#### Windows (Command Prompt)
-
+#### Windows
 ```cmd
 python -m venv scrapy-env
 scrapy-env\Scripts\activate
@@ -47,31 +46,32 @@ scrapy-env\Scripts\activate
 pip install scrapy
 ```
 
----
-
-## Running the Scraper
-
-Execute the following command to run the spider and export the data to a CSV file:
+### 4. Run the Scraper
 
 ```bash
-scrapy crawl gfgnitsgrstudents -o output.csv\n
+scrapy crawl gfgnitsgrstudents -o output.csv
 ```
 
-This will create a CSV file containing the complete set of student data.
+## 📄 Output Format
+
+The generated `output.csv` contains the following columns:
+
+- `user_id`
+- `handle`
+- `coding_score`
+- `total_problems_solved`
+- `potd_longest_streak`
+- `profile_url`
+
+## 📊 Automation & Visualization
+
+- **Automation**: Scraping is scheduled daily via GitHub Actions (`cron`) and can also be triggered manually.
+- **Visualization**: A companion Streamlit app presents the scraped data in an interactive UI.
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## Output CSV Columns
-
-- user_id
-- handle
-- coding_score
-- total_problems_solved
-- potd_longest_streak
-- profile_url
-
----
-
-## License
-
-This project is licensed under the MIT License.
+> Feel free to fork, contribute, or use this as a template for similar scraping and visualization projects.
