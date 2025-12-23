@@ -13,6 +13,7 @@ A Python-based Scrapy project that automates the collection of student coding st
 ## 🛠️ Tech Stack
 
 - **Programming Language**: Python 3
+- **Library** : Pandas
 - **Web Scraping**: Scrapy
 - **Automation**: GitHub Actions
 - **Visualization**: Streamlit
