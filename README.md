@@ -1,3 +1,4 @@
+
 # GFG NIT Srinagar Student Scraper
 
 A Python-based Scrapy project that automates the collection of student coding statistics from GeeksforGeeks (GFG) for NIT Srinagar. This data is extracted via GFG's public API and exported to a clean CSV format, with scheduled scraping and live visualization support.
